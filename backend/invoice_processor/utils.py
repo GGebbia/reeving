@@ -2,7 +2,9 @@ import os
 import pandas as pd
 from .models import Invoice
 
-# TODO: Set up celery task to process and save async.
+from celery import shared_task
+
+@shared_task
 def process_invoices(filepath: str) -> None:
     """
     Reads an excel file and stores in DB the invoice

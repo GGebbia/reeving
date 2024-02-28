@@ -31,8 +31,8 @@ class FileUploadView(APIView):
             file_serializer.save()
 
             # Start celery process
-            process_invoices(filepath=str(settings.BASE_DIR) + file_serializer.data['file'])
-            return Response(file_serializer.data, status=status.HTTP_201_CREATED)
+            process_invoices.delay(filepath=str(settings.BASE_DIR) + file_serializer.data['file'])
+            return Response({"message": "Data is being processed"}, status=status.HTTP_202_ACCEPTED)
         else:
             return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         

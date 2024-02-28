@@ -134,3 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Base directory for file uploads and 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
+
+# REDIS BROKER ENDPOINT
+CELERY_BROKER_URL = 'redis://localhost:6379'
