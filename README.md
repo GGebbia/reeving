@@ -12,8 +12,15 @@ make install
 make create_db
 make run
 ```
-Therefore the backend can be accessible at (`http://127.0.0.1:8000`)
+Therefore the backend can be accessible at [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
+### Run Unit Tests
+For this project the UT will be written using the Django Testing framework instead of Pytest.
+```bash
+make test
+```
+
+In order to check the coverage percentage apply `make coverage` in order to generate and print the report in the terminal.
 
 ## Frontend setup
 In order to setup the frontend service follow these steps
@@ -21,4 +28,4 @@ In order to setup the frontend service follow these steps
 cd frontend
 python3 -m http.server 3000
 ```
-Therefore the frontend can be accessible at (`http://127.0.0.1:3000`)
+Therefore the frontend can be accessible at [http://127.0.0.1:3000](http://127.0.0.1:3000)

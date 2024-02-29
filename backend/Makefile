@@ -7,10 +7,17 @@ clean:
 create_db: clean
 	python3 manage.py makemigrations
 	python3 manage.py migrate
-	python3 manage.py createsuperuser
+	# python3 manage.py createsuperuser
 
 run: install
 	python3 manage.py runserver
+
+test:
+	python3 manage.py test
+
+coverage:
+	coverage run manage.py test
+	coverage report -m
 
 venv:
 	test -d venv || python3 -m venv venv

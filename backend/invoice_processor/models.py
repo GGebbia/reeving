@@ -1,16 +1,8 @@
-from django.utils import timezone
 from django.db import models
 
-# TODO: It is has some sense to add this base class?
-# class BaseModel(models.Model):
-#     created_at = models.DateTimeField(default=timezone.now)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-# class Meta:
-#         abstract = True
 
 class Invoice(models.Model):
-    invoice_number = models.IntegerField(primary_key=True, unique=True)
+    invoice_number = models.IntegerField()
     date = models.DateField()
     customer = models.CharField(max_length=100)
     revenue_source = models.CharField(max_length=100)
@@ -25,8 +17,10 @@ class Invoice(models.Model):
 
     class Meta:
         ordering = ['-date']
+        indexes = [
+            models.Index(fields=['revenue_source']),
+        ]
+        constraints = [
+            models.UniqueConstraint(name='unique_invoice_number_customer', fields=['invoice_number', 'customer'])
+        ]
 
-
-class UploadedFile(models.Model):
-    file = models.FileField(upload_to='data/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
