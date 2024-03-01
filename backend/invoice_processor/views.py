@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .tasks import process_invoices
+from .pagination import StandardResultsSetPagination
 
 from .models import Invoice
 from .serializer import InvoiceSerializer, UploadedFileSerializer, RevenueSourceTotalsSerializer
@@ -14,10 +15,9 @@ from django.core.files.base import ContentFile
 
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 
-
 class InvoiceViewSet(viewsets.ModelViewSet):
     serializer_class = InvoiceSerializer
-
+    pagination_class = StandardResultsSetPagination
     def get_queryset(self):
         """
         Override of get_queryset function. Doing so, the GET /api/invoices/ endpoint accepts querying
@@ -80,7 +80,7 @@ class RevenueSourceTotalsView(APIView):
                 F('value') - (F('value') * F('haircut_percent') / 100),
                 output_field=DecimalField(max_digits=10, decimal_places=3))),
             total_expected_fee=Sum(ExpressionWrapper(
-                (F('value') - (F('value') * F('haircut_percent') / 100)) * F('daily_fee_percent') / 100 * F('expected_payment_duration'),
+                (F('value') - (F('value') *F('haircut_percent') / 100)) * F('daily_fee_percent')/ 100 * F('expected_payment_duration'),
                 output_field=DecimalField(max_digits=10, decimal_places=3)))
         ).order_by('total_value')
 

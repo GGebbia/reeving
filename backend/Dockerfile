@@ -6,7 +6,5 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
-COPY . /code/
-
-RUN make venv
-RUN make create_db
+COPY requirements.txt /code
+RUN pip install -r requirements.txt
