@@ -1,0 +1,38 @@
+version: "3.10"
+
+services:
+    backend:
+        build: ./backend
+        container_name: backend
+        command: >
+            bash -c "python manage.py makemigrations &&
+                     python manage.py migrate &&
+                     python manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - ./backend:/code/
+        ports:
+            - "8000:8000"
+        depends_on:
+            - redis
+
+    # Celery Service
+    celery:
+        build: ./backend
+        command: "celery -A backend worker -l INFO"
+        volumes:
+            - ./backend:/code/
+        depends_on:
+            - backend
+            - redis
+
+    # Redis Service
+    redis:
+        image: "redis:alpine"
+
+    nginx:
+      image: nginx:latest
+      ports:
+        - 3000:80
+      volumes:
+        - ./frontend:/usr/share/nginx/html:ro
+

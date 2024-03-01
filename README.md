@@ -29,3 +29,11 @@ cd frontend
 python3 -m http.server 3000
 ```
 Therefore the frontend can be accessible at [http://127.0.0.1:3000](http://127.0.0.1:3000)
+
+
+## Webapp docker deploy
+There is a docker-compose.yml file that serves the backend, frontend, redis and celery services and exposes certain ports to communicate through them
+Execute:
+```bash
+docker-compose up --build
+```
