@@ -2,5 +2,9 @@ venv/
 
 *.sqlite3
 **/*.xlsx
+**/*.csv
+
 **/*.pyc
 **/__pycache__/
+
+.coverage
