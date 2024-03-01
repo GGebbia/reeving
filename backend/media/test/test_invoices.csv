@@ -1,0 +1,11 @@
+date,invoice number,value,haircut percent,Daily fee percent,currency,Revenue source,customer,Expected payment duration
+2023-04-30,3531,519.5,10,0.125,USD,Happy Playcrows,RunUp INC,65
+2023-05-01,3710,12041.95,10,0.125,USD,Index Playcrows,RunUp INC,60
+2023-03-27,3533,1199.2,10,0.125,USD,SpotX Replay,RunUp INC,65
+2023-04-01,3534,580.6,10,0.125,USD,SpotX Replay,RunUp INC,65
+2023-04-01,3536,619.501082,10,0.125,USD,AlexUndeR,RunUp INC,65
+2023-04-10,3579,1905.92,10,0.125,USD,SpotX Replay,RunUp INC,65
+2023-05-01,3600,2080.39,10,0.125,USD,SpotX Replay,RunUp INC,65
+2021-12-01,3080,5496.876,10,0.125,USD,Happy Playcrows,RunUp INC,65
+2023-04-17,3583,1153.724,10,0.125,USD,Happy Playcrows,RunUp INC,65
+2023-03-27,3539,4002.3006,10,0.125,USD,SuperAmazing,RunUp INC,60
